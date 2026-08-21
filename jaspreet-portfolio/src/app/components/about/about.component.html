@@ -1,0 +1,65 @@
+<section id="about" class="relative py-24 sm:py-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
+    <!-- Left: image -->
+    <div class="reveal flex justify-center lg:justify-start order-2 lg:order-1">
+      <div class="relative w-72 h-72 sm:w-80 sm:h-80">
+        <div class="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-signal-blue/30 via-signal-purple/20 to-signal-cyan/20 blur-2xl"></div>
+        <div class="relative w-full h-full rounded-[2rem] glass-card overflow-hidden">
+          <img
+            src="assets/images/profile.svg"
+            alt="Portrait of Jaspreet Singh, Full-Stack Developer"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div class="absolute -bottom-6 -right-6 glass-card px-5 py-4 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-signal-blue to-signal-purple flex items-center justify-center">
+            <lucide-icon [img]="icons.GraduationCap" [size]="18" class="text-white"></lucide-icon>
+          </div>
+          <div>
+            <p class="text-ink-100 text-sm font-medium">BCA — 3rd Year</p>
+            <p class="text-ink-500 text-xs font-mono">Computer Applications</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: content -->
+    <div class="reveal order-1 lg:order-2">
+      <span class="section-eyebrow">Get to know me</span>
+      <h2 class="section-heading mt-3">About Me</h2>
+
+      <p class="mt-6 text-ink-300 leading-relaxed">
+        I'm a passionate full-stack developer who enjoys turning ideas into fast, reliable web applications.
+        My focus is the MERN and MEAN ecosystems — Angular and React on the frontend, Node.js and Express on
+        the backend, backed by MongoDB — and I care as much about clean architecture as I do about pixel-level polish.
+      </p>
+
+      @if (expanded()) {
+        <p class="mt-4 text-ink-300 leading-relaxed">
+          Outside of shipping features, I spend time reading source code, contributing to side projects and
+          sharpening my understanding of system design — from authentication flows to database schema decisions.
+          I like problems that touch the whole stack, because that's where the interesting trade-offs live.
+        </p>
+      }
+
+      <button
+        type="button"
+        (click)="toggle()"
+        class="mt-4 inline-flex items-center gap-1.5 font-mono text-sm text-signal-cyan hover:text-signal-blue transition-colors"
+      >
+        {{ expanded() ? 'Show Less' : 'More About Me' }}
+        <lucide-icon [img]="icons.ChevronDown" [size]="16" class="transition-transform" [class.rotate-180]="expanded()"></lucide-icon>
+      </button>
+
+      <div class="mt-10 grid grid-cols-2 gap-5">
+        @for (stat of stats; track stat.label) {
+          <div class="glass-card px-5 py-4">
+            <p class="font-display text-2xl font-semibold text-ink-100">{{ stat.value }}</p>
+            <p class="text-ink-500 text-xs mt-1">{{ stat.label }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

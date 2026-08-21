@@ -1,0 +1,31 @@
+<footer class="relative border-t border-white/[0.06] py-12">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+    <div class="text-center sm:text-left">
+      <p class="font-display text-lg font-semibold text-ink-100">Jaspreet Singh</p>
+      <p class="text-ink-500 text-xs font-mono mt-1">Full-Stack Developer</p>
+    </div>
+
+    <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-mono text-xs text-ink-500">
+      @for (link of navLinks; track link.href) {
+        <li><a [href]="link.href" class="hover:text-signal-cyan transition-colors">{{ link.label }}</a></li>
+      }
+    </ul>
+
+    <div class="flex items-center gap-3">
+      <a href="https://github.com/jxspriit" target="_blank" rel="noopener" aria-label="GitHub" class="icon-btn">
+        <lucide-icon [img]="icons.Github" [size]="16"></lucide-icon>
+      </a>
+      <a href="https://www.linkedin.com/in/jaspreet-singh-902831305/" target="_blank" rel="noopener" aria-label="LinkedIn" class="icon-btn">
+        <lucide-icon [img]="icons.Linkedin" [size]="16"></lucide-icon>
+      </a>
+      <a href="mailto:js2510870@gmail.com" aria-label="Email" class="icon-btn">
+        <lucide-icon [img]="icons.Mail" [size]="16"></lucide-icon>
+      </a>
+    </div>
+  </div>
+
+  <div class="mt-8 pt-6 border-t border-white/[0.04] text-center">
+    <p class="text-ink-700 text-xs">© {{ year }} Jaspreet Singh. All rights reserved.</p>
+    <p class="text-ink-700 text-[11px] mt-1 font-mono">Built with Angular &amp; Tailwind CSS using Claude</p>
+  </div>
+</footer>

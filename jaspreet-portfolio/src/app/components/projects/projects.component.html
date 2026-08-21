@@ -1,0 +1,113 @@
+<section id="projects" class="relative py-24 sm:py-32 grid-bg">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto reveal">
+      <span class="section-eyebrow">Selected work</span>
+      <h2 class="section-heading mt-3">Projects</h2>
+      <p class="mt-4 text-ink-500">Products built end-to-end — from schema design to shipped interface.</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="mt-10 flex flex-wrap justify-center gap-2 reveal">
+      @for (f of filters; track f.key) {
+        <button
+          type="button"
+          (click)="setFilter(f.key)"
+          class="px-5 py-2 rounded-full font-mono text-xs tracking-wide transition-all duration-300"
+          [class.bg-gradient-to-r]="activeFilter() === f.key"
+          [class.from-signal-blue]="activeFilter() === f.key"
+          [class.to-signal-purple]="activeFilter() === f.key"
+          [class.text-white]="activeFilter() === f.key"
+          [class.glass]="activeFilter() !== f.key"
+          [class.text-ink-500]="activeFilter() !== f.key"
+        >
+          {{ f.label }}
+        </button>
+      }
+    </div>
+
+    <!-- Grid -->
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      @for (project of filteredProjects(); track project.id) {
+        <article class="glass-card overflow-hidden group reveal">
+          <div class="relative h-44 overflow-hidden bg-base-700">
+            <img
+              [src]="project.image"
+              [alt]="project.title + ' project preview'"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-base-900 via-base-900/10 to-transparent"></div>
+          </div>
+
+          <div class="p-6">
+            <h3 class="font-display text-lg font-semibold text-ink-100">{{ project.title }}</h3>
+            <p class="text-ink-500 text-xs font-mono mt-1">{{ project.tagline }}</p>
+            <p class="text-ink-300 text-sm leading-relaxed mt-3 line-clamp-2">{{ project.description }}</p>
+
+            <div class="flex flex-wrap gap-1.5 mt-4">
+              @for (tech of project.technologies.slice(0, 4); track tech) {
+                <span class="text-[11px] font-mono px-2 py-1 rounded-md bg-white/5 text-ink-500 border border-white/[0.06]">{{ tech }}</span>
+              }
+            </div>
+
+            <div class="flex items-center gap-2 mt-6">
+              <a [href]="project.githubUrl" target="_blank" rel="noopener" class="icon-btn !w-9 !h-9" [attr.aria-label]="'View ' + project.title + ' source on GitHub'">
+                <lucide-icon [img]="icons.Github" [size]="16"></lucide-icon>
+              </a>
+              <a [href]="project.liveUrl" target="_blank" rel="noopener" class="icon-btn !w-9 !h-9" [attr.aria-label]="'Open live demo of ' + project.title">
+                <lucide-icon [img]="icons.ExternalLink" [size]="16"></lucide-icon>
+              </a>
+              <button
+                type="button"
+                (click)="openDetails(project)"
+                class="ml-auto inline-flex items-center gap-1 font-mono text-xs text-signal-cyan hover:text-signal-blue transition-colors"
+              >
+                View Details
+                <lucide-icon [img]="icons.ArrowRight" [size]="14"></lucide-icon>
+              </button>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+
+  <!-- Detail modal -->
+  @if (selectedProject(); as project) {
+    <div class="fixed inset-0 z-[60] flex items-center justify-center p-6 bg-base-900/80 backdrop-blur-sm" (click)="closeDetails()">
+      <div class="glass-card max-w-lg w-full p-8 relative" (click)="$event.stopPropagation()">
+        <button type="button" (click)="closeDetails()" class="absolute top-5 right-5 icon-btn !w-9 !h-9" aria-label="Close project details">
+          <lucide-icon [img]="icons.X" [size]="16"></lucide-icon>
+        </button>
+
+        <h3 class="font-display text-2xl font-semibold text-ink-100">{{ project.title }}</h3>
+        <p class="text-signal-cyan text-sm font-mono mt-1">{{ project.tagline }}</p>
+        <p class="text-ink-300 text-sm leading-relaxed mt-4">{{ project.description }}</p>
+
+        <h4 class="text-ink-100 text-sm font-medium mt-6 mb-2">Key Features</h4>
+        <ul class="grid grid-cols-2 gap-x-4 gap-y-1.5">
+          @for (feature of project.features; track feature) {
+            <li class="text-ink-500 text-sm flex items-center gap-2">
+              <span class="w-1 h-1 rounded-full bg-signal-blue"></span>{{ feature }}
+            </li>
+          }
+        </ul>
+
+        <div class="flex flex-wrap gap-1.5 mt-6">
+          @for (tech of project.technologies; track tech) {
+            <span class="text-[11px] font-mono px-2 py-1 rounded-md bg-white/5 text-ink-300 border border-white/[0.06]">{{ tech }}</span>
+          }
+        </div>
+
+        <div class="flex gap-3 mt-7">
+          <a [href]="project.githubUrl" target="_blank" rel="noopener" class="btn-secondary flex-1 !py-2.5">
+            <lucide-icon [img]="icons.Github" [size]="16"></lucide-icon> Code
+          </a>
+          <a [href]="project.liveUrl" target="_blank" rel="noopener" class="btn-primary flex-1 !py-2.5">
+            <lucide-icon [img]="icons.ExternalLink" [size]="16"></lucide-icon> Live Demo
+          </a>
+        </div>
+      </div>
+    </div>
+  }
+</section>

@@ -1,0 +1,90 @@
+<header
+  class="fixed top-0 inset-x-0 z-50 transition-all duration-300"
+  [class]="scrolled() ? 'bg-base-900/80 backdrop-blur-xl border-b border-white/[0.06]' : ''"
+>
+  <nav class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#home" class="font-display text-xl font-semibold tracking-tight text-ink-100">
+      JASPREET<span class="text-signal-blue">.</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <ul class="hidden lg:flex items-center gap-1 font-mono text-[13px]">
+      @for (link of navLinks; track link.href) {
+        <li>
+          <a
+            [href]="link.href"
+            class="relative px-4 py-2 rounded-full transition-colors duration-300"
+            [class.text-ink-100]="isActive(link.href)"
+            [class.text-ink-500]="!isActive(link.href)"
+          >
+            <span
+              class="absolute inset-0 rounded-full glass -z-10 transition-opacity duration-300"
+              [class.opacity-100]="isActive(link.href)"
+              [class.opacity-0]="!isActive(link.href)"
+            ></span>
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <!-- Right actions -->
+    <div class="hidden lg:flex items-center gap-3">
+      <a href="assets/resume/jaspreet-singh-resume.pdf" download class="btn-secondary !py-2.5 !px-5 text-sm">
+        <lucide-icon [img]="icons.FileDown" [size]="16"></lucide-icon>
+        Resume
+      </a>
+      <a href="https://github.com/jxspriit" target="_blank" rel="noopener" aria-label="GitHub profile" class="icon-btn">
+        <lucide-icon [img]="icons.Github" [size]="18"></lucide-icon>
+      </a>
+      <a href="https://linkedin.com/in/jaspreet-singh-902831305/" target="_blank" rel="noopener" aria-label="LinkedIn profile" class="icon-btn">
+        <lucide-icon [img]="icons.Linkedin" [size]="18"></lucide-icon>
+      </a>
+    </div>
+
+    <!-- Mobile toggle -->
+    <button
+      type="button"
+      class="lg:hidden icon-btn"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen()"
+      aria-label="Toggle navigation menu"
+    >
+      <lucide-icon [img]="menuOpen() ? icons.X : icons.Menu" [size]="20"></lucide-icon>
+    </button>
+  </nav>
+
+  <!-- Mobile drawer -->
+  <div
+    class="lg:hidden fixed inset-0 top-20 bg-base-900/95 backdrop-blur-xl transition-all duration-300 overflow-hidden"
+    [class.opacity-100]="menuOpen()"
+    [class.pointer-events-auto]="menuOpen()"
+    [class.opacity-0]="!menuOpen()"
+    [class.pointer-events-none]="!menuOpen()"
+  >
+    <ul class="flex flex-col items-center gap-2 pt-10 font-mono text-base">
+      @for (link of navLinks; track link.href) {
+        <li class="w-full text-center">
+          <a
+            [href]="link.href"
+            (click)="closeMenu()"
+            class="block py-4 transition-colors"
+            [class.text-signal-blue]="isActive(link.href)"
+            [class.text-ink-300]="!isActive(link.href)"
+          >
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+    <div class="flex items-center justify-center gap-4 mt-8">
+      <a href="https://github.com/jaspreetsingh" target="_blank" rel="noopener" aria-label="GitHub profile" class="icon-btn">
+        <lucide-icon [img]="icons.Github" [size]="18"></lucide-icon>
+      </a>
+      <a href="https://linkedin.com/in/jaspreetsingh" target="_blank" rel="noopener" aria-label="LinkedIn profile" class="icon-btn">
+        <lucide-icon [img]="icons.Linkedin" [size]="18"></lucide-icon>
+      </a>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,14 @@
+<section class="relative py-14 border-y border-white/[0.06] overflow-hidden group">
+  <div class="flex w-max animate-marquee group-hover:[animation-play-state:paused]">
+    @for (batch of [0, 1]; track batch) {
+      <div class="flex items-center shrink-0">
+        @for (tech of items; track $index) {
+          <span class="font-display text-2xl sm:text-3xl font-semibold text-ink-700 px-8 flex items-center gap-8">
+            {{ tech }}
+            <span class="w-1.5 h-1.5 rounded-full bg-signal-blue/40"></span>
+          </span>
+        }
+      </div>
+    }
+  </div>
+</section>

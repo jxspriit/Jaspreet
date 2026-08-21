@@ -1,0 +1,21 @@
+<section class="relative py-24 sm:py-32 grid-bg">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto reveal">
+      <span class="section-eyebrow">On GitHub</span>
+      <h2 class="section-heading mt-3">Coding Activity</h2>
+      <p class="mt-4 text-ink-500">A snapshot of what I've been shipping and contributing to.</p>
+    </div>
+
+    <div class="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-6">
+      @for (stat of stats; track stat.label) {
+        <div class="glass-card p-7 text-center reveal">
+          <div class="w-11 h-11 mx-auto rounded-xl bg-gradient-to-br from-signal-blue/20 to-signal-purple/20 border border-white/10 flex items-center justify-center mb-4">
+            <lucide-icon [img]="iconFor(stat.icon)" [size]="18" class="text-signal-cyan"></lucide-icon>
+          </div>
+          <p class="font-display text-2xl sm:text-3xl font-semibold text-ink-100">{{ stat.value }}</p>
+          <p class="text-ink-500 text-xs mt-1 font-mono">{{ stat.label }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
