@@ -8,9 +8,9 @@ export const PROJECTS: Project[] = [
     description:
       'A complete e-commerce experience with authentication, product management, cart, wishlist, reviews and an admin dashboard for order and inventory control.',
     image: 'assets/images/projects/cartverse.svg',
-    technologies: ['Angular', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Cloudinary'],
+    technologies: ['React.js', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Cloudinary'],
     category: 'fullstack',
-    features: ['Authentication', 'Product management', 'Cart & wishlist', 'Reviews', 'Admin dashboard', 'Image upload', 'Order tracking'],
+    features: ['Authentication', 'Product management', 'Cart', 'Reviews', 'Admin dashboard', 'Image upload', 'Order tracking'],
     githubUrl: 'https://github.com/jxspriit/My-shop-web',
     liveUrl: 'https://shopnow-woad.vercel.app',
   },
