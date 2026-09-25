@@ -16,16 +16,16 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 2,
-    title: 'Live Chat Application',
-    tagline: 'Real-time messaging application',
+    title: 'GenWebAI Saas Application',
+    tagline: 'Website Builder Using Ai',
     description:
-      'A real-time chat platform with instant messaging, presence indicators and user profiles, built on a WebSocket-driven architecture.',
+      'An ai agent fast and responsive website builder Saas application using mern Stack.',
     image: 'assets/images/projects/livechat.svg',
-    technologies: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
+    technologies: ['React', 'Node.js', 'express', 'MongoDB', 'firebase', 'stripe'],
     category: 'fullstack',
-    features: ['Real-time messaging', 'Authentication', 'Online status', 'User profiles'],
-    githubUrl: 'https://github.com/jaspreetsingh/live-chat-app',
-    liveUrl: 'https://livechat.demo.dev',
+    features: ['Saas', 'Firebase', 'Fast and responsive', 'User profiles'],
+    githubUrl: 'https://github.com/jxspriit/GenwebAI',
+    liveUrl: 'https://genweb-ai-nu.vercel.app/',
   },
   {
     id: 3,
